@@ -1,3 +1,8 @@
+fun <I, O> memoize(f: (I) -> O): (I) -> O {
+        val cache = mutableMapOf<I, O>()
+        return { input -> cache.getOrPut(input) { f(input) } }
+}
+// square grid traversal with step cost = 1 
 fun gridStep(n: Int, pos: Array<Int>, gate: (Int,Int)->Boolean, q: ArrayDeque<Pair<Int,Int>>, src: Pair<Int,Int>, dest: Pair<Int,Int>) {
   val (x,y) = dest
   val (sx,sy) = src
